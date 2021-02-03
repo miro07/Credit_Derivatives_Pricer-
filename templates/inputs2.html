@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inputs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+     <div class="container border" style="margin-top: 50px; padding: 100px;">
+        <div class="text-center mb-5">
+            <h2>Parameters insert</h2>
+        </div>
+        <form style="padding-left: 150px; padding-right: 150px;" method="POST"  action="{{ url_for('parameters1') }}" method="post">
+            <div class="form-group">
+                <label>Maturity(in years)</label>
+                <input class="form-control" name="Maturity" />
+            </div>
+            <div class="form-group">
+                 <label>Discount rate</label>
+                <input class="form-control" name="Discount rate" />
+            </div>
+             <div class="form-group">
+                 <label>Correlation</label>
+                <input class="form-control" name="Correlation" />
+            </div>
+            <div class="form-group">
+                 <label> Geuss 1 </label>
+                <input class="form-control" name="Geuss 1" />
+            </div>
+             <div class="form-group">
+                 <label>Geuss 2 </label>
+                <input class="form-control" name="Geuss 2" />
+            </div>
+            <div class="form-group">
+                 <label>Geuss 3 </label>
+                <input class="form-control" name="Geuss 3" />
+            </div>
+            <div class="form-group">
+                 <label>Simulation Number </label>
+                <input class="form-control" name="Simulation Number" />
+            </div>
+            <div class="form-group">
+                 <label>K-default CDS</label>
+                <input class="form-control" name="K-default CDS" />
+            </div>
+              <div class="form-group">
+                 <label>Size of CDO Tranche</label>
+                <input class="form-control" name="Size of CDO Tranche" />
+            </div>
+               <div class="form-group">
+                 <label>Lower of CDO Tranche</label>
+                <input class="form-control" name="lower of CDO Tranche" />
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

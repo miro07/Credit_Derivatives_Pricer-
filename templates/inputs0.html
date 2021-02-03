@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inputs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+     <div class="container border" style="margin-top: 50px; padding: 100px;">
+        <div class="text-center mb-5">
+            <h2>Parameters insert</h2>
+        </div>
+        <form style="padding-left: 150px; padding-right: 150px;" method="POST"  action="{{ url_for('gauss') }}" method="post">
+            <div class="form-group">
+                <label>Maturity</label>
+                <select class="form-control" name="Maturity">
+                    <option value="1Y">1 year Maturity</option>
+                    <option value="3Y">3 Years Maturity</option>
+                    <option value="5Y"> 5 Years Maturity</option>
+                </select>
+            </div>
+            <div class="form-group">
+                 <label>Simulation Number </label>
+                <input class="form-control" name="Simulation Number" />
+            </div>
+              <div class="form-group">
+                 <label>Size of CDO Tranche</label>
+                <input class="form-control" name="Size of CDO Tranche" />
+            </div>
+               <div class="form-group">
+                 <label>Lower of CDO Tranche</label>
+                <input class="form-control" name="lower of CDO Tranche" />
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
