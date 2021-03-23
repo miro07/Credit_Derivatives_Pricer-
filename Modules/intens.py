@@ -5,10 +5,15 @@ from numpy import ones, eye
 
 
 
-
+# Time Homogenous Poisson Processes
+""" the intensity process is equal to a
+positive Lambda constant """
 def HP_Model(t, Lambda):
     return exp(- Lambda * t)
 
+# Inhomgenous Poisson Processes Model
+""" The intensity parameter Lambda(t) is strictly positive, piecewise continuous, 
+and deterministic we try to calculate the intensity in parties for every tenor """
 def IHP_Model( Lambdas,t):
     tenors = [1,3,5]
     sum = 0
@@ -25,10 +30,13 @@ def IHP_Model( Lambdas,t):
                 sum += Lambdas[c] * (t - tenors[c])
             break
     return exp(-sum)
-
+# Cox-Ingersoll-Ross Models:
+""" The intensity parameter Lambda(t) follow the stochastic process corresponds to the Cox process """
 def CIR_Model(coefs,t):
     def coth(x):
         return 1 / tanh(x)
+    """k corresponds to the speed of adjustment to the mean v.
+       gamma is the volatility """
     k, v, gamma, lambda0 = coefs
     if t == 0.0:
         return 1
@@ -37,17 +45,22 @@ def CIR_Model(coefs,t):
         survival = 1 - (exp(k ** 2 * v * t / gamma ** 2) * exp(-2 * lambda0 / (k + rho * coth(rho * t / 2))))/ (coth(rho * t / 2) + k * sinh(rho * t / 2) / rho) ** (2 * k * v / gamma ** 2)
 
         return survival
-
+# the Gamma-Orstein-Uhlenbeck Models:
+""" The intensity parameter Lambda(t) follow an Orstein-Uhlenbeck process """
 def GammaOUC_Model(coefs,t):
-
+    """ a corresponds to the speed of adjustment to the mean b.
+       gamma is the volatility """
     a, b,gamma, lambda0 = coefs
 
     survival = exp(-lambda0 / gamma * (1 - exp(-gamma * t)) - ((gamma * a) / (1 + gamma * b)) * \
                    (b * log(b / (b + 1 / gamma * (1 - exp(-gamma * t)))) + t))
 
     return survival
-
+# the Inverse Gamma-Orstein-Uhlenbeck Models:
+""" The intensity parameter Lambda(t) follow an Orstein-Uhlenbeck process """
 def IGOU_Model(coefs,t):
+    """ a corresponds to the speed of adjustment to the mean b.
+       gamma is the volatility """
     a, b, gamma,lambda0 = coefs
 
     k = 2 * b ** (-2) / gamma
