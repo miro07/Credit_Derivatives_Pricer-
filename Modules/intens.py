@@ -32,12 +32,12 @@ def IHP_Model( Lambdas,t):
     return exp(-sum)
 # Cox-Ingersoll-Ross Models:
 """ The intensity parameter Lambda(t) follow the stochastic process corresponds to the Cox process """
-def CIR_Model(coefs,t):
+def CIR_Model(coeffs,t):
     def coth(x):
         return 1 / tanh(x)
     """k corresponds to the speed of adjustment to the mean v.
        gamma is the volatility """
-    k, v, gamma, lambda0 = coefs
+    k, v, gamma, lambda0 = coeffs
     if t == 0.0:
         return 1
     else:
@@ -47,10 +47,10 @@ def CIR_Model(coefs,t):
         return survival
 # the Gamma-Orstein-Uhlenbeck Models:
 """ The intensity parameter Lambda(t) follow an Orstein-Uhlenbeck process """
-def GammaOUC_Model(coefs,t):
+def GammaOUC_Model(coeffs,t):
     """ a corresponds to the speed of adjustment to the mean b.
        gamma is the volatility """
-    a, b,gamma, lambda0 = coefs
+    a, b,gamma, lambda0 = coeffs
 
     survival = exp(-lambda0 / gamma * (1 - exp(-gamma * t)) - ((gamma * a) / (1 + gamma * b)) * \
                    (b * log(b / (b + 1 / gamma * (1 - exp(-gamma * t)))) + t))
@@ -58,10 +58,10 @@ def GammaOUC_Model(coefs,t):
     return survival
 # the Inverse Gamma-Orstein-Uhlenbeck Models:
 """ The intensity parameter Lambda(t) follow an Orstein-Uhlenbeck process """
-def IGOU_Model(coefs,t):
+def IGOU_Model(coeffs,t):
     """ a corresponds to the speed of adjustment to the mean b.
        gamma is the volatility """
-    a, b, gamma,lambda0 = coefs
+    a, b, gamma,lambda0 = coeffs
 
     k = 2 * b ** (-2) / gamma
     A = (1 - sqrt(1 + k * (1 - exp(-gamma * t)))) \
