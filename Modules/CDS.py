@@ -19,6 +19,7 @@ class CDS(object):
 
 
     def spread(self,coefs):
+        """Calculate the CDS spreads expressed in basis points with a quarterly payment dates"""
         self.Coefs = coefs
         methods = {'HP': ints.HP_Model,
                    'IHP': ints.IHP_Model,
@@ -48,6 +49,7 @@ class CDS(object):
         return (self.Spread)
 
     def default_time(self,coefs,Uniforme):
+        """ Return the default time (used for calibration)"""
         #print('in')
         methods = {'HP': ints.HP_Model,
                    'IHP': ints.IHP_Model,
