@@ -10,10 +10,9 @@ class Calibration ():
         self.Method = method
         self.calibrated_lambda = None
         self.CDSid=id
-        self.calibrate_resultat = []
-    def Eror_function(self,Lambda):
+    def Error_function(self,Lambda):
         """ Calculates the error in estimation for use in our calibration
-        routines.Currently we use the RMSE norm """ 
+        routines.Currently we use the RMSE """ 
         Mdt=pd.read_excel('Credit-Portfolio.xls', sheet_name='Portfolio', index_col=None)
         sum = 0
         maturities = [1,3,5]
@@ -40,7 +39,7 @@ class Calibration ():
         else:
             optimise = methods[method]
 
-        output = optimise(self.Eror_function,self.Guess,disp=0.0 )
+        output = optimise(self.Error_function,self.Guess,disp=0.0 )
         self.calibrated_lambda = output
         #print(output)
         return output
