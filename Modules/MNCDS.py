@@ -23,6 +23,8 @@ class MNCDS():
 
 
     def Pricing(self,default_times,K_default):
+        """Pays of a sum of 1 at time t is the k-th default in the basket occurs at
+    time t < T.  Pays off nothing otherwise"""
         sorted_default_times = sorted(default_times)
         print(sorted_default_times)
         if len(sorted_default_times) < K_default:
