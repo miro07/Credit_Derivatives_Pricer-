@@ -11,8 +11,9 @@ class Calibration ():
         self.calibrated_lambda = None
         self.CDSid=id
         self.calibrate_resultat = []
-
     def Eror_function(self,Lambda):
+        """ Calculates the error in estimation for use in our calibration
+        routines.Currently we use the RMSE norm """ 
         Mdt=pd.read_excel('Credit-Portfolio.xls', sheet_name='Portfolio', index_col=None)
         sum = 0
         maturities = [1,3,5]
@@ -27,6 +28,7 @@ class Calibration ():
 
 
     def Calibrate(self,method='nm'):
+        """ Performs the calibration and returns the optimal parameters. The built in Optimise method in SciPy uses Nelder-Mead optimisation. """
         methods = {'nm': optimize.fmin,
                    'powell': optimize.fmin_powell,
                    'cg': optimize.fmin_cg,
